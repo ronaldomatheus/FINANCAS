@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="./assets/style.css"></head>
+    <title>ORGANIZAÇÃO FINANCEIRA</title>
+</head>
+    <style type="text/css">
+
+		body {
+			font-family: Arial, sans-serif;
+            background:Cornsilk;
+          
+		}
+		.input-container {
+			margin-bottom: 10px;
+            margin: 0px 10px 10px;
+            
+		}
+		.button-container {
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		button {
+			padding: 10px 20px;
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #3e8e41;
+		}
+		.resultado-container {
+			margin-top: 20px;
+		}
+		label {
+			font-weight:bold;
+		}
+		span {
+			font-weight: normal;
+		}
+
+		/* Prefixos para diferentes navegadores */
+		/* Chrome, Safari, Edge */
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+		input[type=number] {
+			-moz-appearance: textfield;
+		}
+		/* Firefox */
+		input[type=number] {
+			-moz-appearance: textfield;
+			/* Width is necessary to override Firefox's default */
+			width: 95%;
+		}
+		/* Internet Explorer */
+		input[type=number]::-webkit-inner-spin-button,
+		input[type=number]::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+        .tracos {
+            text-align: center;
+        }
+       
+	
+    </style>
+    <body>
+        <div class="container">
+        <h1 class="tracos">ORGANIZAÇÃO FINANCEIRA</h1>
+        <h2>__________________________</h2>
+        <h2>VALOR TOTAL DE GANHOS:</h2>
+        <div class="input-container">
+            <label for="valor">Digite o valor:</label>
+            <input type="number" id="valor" placeholder="Clique aqui para digitar o valor">
+        </div>
+        <div class="button-container">
+            <button id="calcular">Calcular</button>
+        </div>
+        <h2 class="tracos">__________________________</h2>
+        <H3>TRIBUTOS E PRINCÍPIOS FINANCEIROS</H3>
+        <div class="resultado-container">
+            <label for="primicia">Primícia: </label>
+            <span id="primicia"></span>
+            <br>
+            <label for="dizimo">Dízimo: </label>
+            <span id="dizimo"></span>
+            <br>
+            <label for="semeadura">Semeadura: </label>
+            <span id="semeadura"></span>
+            <br>
+            <label for="oferta">Oferta: </label>
+            <span id="oferta"></span>
+        </div>
+        <h2>__________________________</h2>
+        <H3>RESERVA DE EMERGÊNCIA E INVESTIMENTOS</H3>
+        <div class="resultado-container">
+            <label for="quintaParte">Quinta Parte: </label>
+            <span id="quintaParte"></span>
+            <br>
+            <label for="invEstudo">Investimento ou Estudos: </label>
+            <span id="invEstudo"></span>
+            <br>
+        </div>
+        <h2>__________________________</h2>
+        <H3>CONTAS E CUSTOS</H3>
+        <div class="resultado-container">
+            <label for="usoLivre">Gastos Livre: </label>
+            <span id="usoLivre"></span>
+            <br>
+            <label for="contas">Gastos Contas: </label>
+            <span id="contas"></span>
+            <br>
+        </div>
+    </div>
+    </body>
+
+    <script>
+        if (!Number.prototype.toFixed) {
+            Number.prototype.toFixed = function (n) {
+                var power = Math.pow(10, n || 0);
+                return String(Math.round(this * power) / power);
+            };
+        }
+    
+        window.onload = function() {
+            document.getElementById("calcular").addEventListener("click", function() {
+                // Obter o valor inputado pelo usuÃ¡rio
+                var valor = parseFloat(document.getElementById("valor").value);
+    
+                // Calcular a primeira porcentagem (20%)
+                var primicia = (valor * 3.34) / 100;
+    
+                // Calcular a segunda porcentagem (3% do valor restante)
+                var valorRestante = valor - primicia;
+                var dizimo = valor * 0.1;
+    
+                // Calcular a terceira porcentagem (1% do valor que sobrou)
+                var valorRestante2 = valorRestante - dizimo;
+                var semeadura = (valor * 4.0) / 100;
+    
+                var valorRestante3 = valorRestante2 - semeadura;
+                var oferta = (valor * 2.66) / 100;
+    
+                var valorRestante4 = valorRestante3 - oferta;
+                var quintaParte = valor * 0.1;
+    
+                var valorRestante5 = valorRestante4 - quintaParte;
+                var invEstudo = valor * 0.05;
+    
+                var valorRestante6 = valorRestante5 - invEstudo;
+                var usoLivre = valor * 0.1;
+    
+                var valorRestante7 = valorRestante6 - usoLivre;
+                var contas = valor * 0.55;
+                
+    
+                // Atualizar os elementos HTML com os resultados
+                document.getElementById("primicia").innerHTML = primicia.toFixed(2);
+                document.getElementById("dizimo").innerHTML = dizimo.toFixed(2);
+                document.getElementById("semeadura").innerHTML = semeadura.toFixed(2);
+                document.getElementById("oferta").innerHTML = oferta.toFixed(2);
+                document.getElementById("quintaParte").innerHTML = quintaParte.toFixed(2);
+                document.getElementById("invEstudo").innerHTML = invEstudo.toFixed(2);
+                document.getElementById("usoLivre").innerHTML = usoLivre.toFixed(2);
+                document.getElementById("contas").innerHTML = contas.toFixed(2);
+            });
+        };
+    </script>
+</html>
